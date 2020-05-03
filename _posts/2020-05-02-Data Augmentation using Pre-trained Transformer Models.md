@@ -142,13 +142,13 @@ unified approach와의 비교를 위한 baseline으로 아래의 두 가지 방�
 
 세 가지의 text classification dataset을 활용함. 또한 사용한 pre-trained model (BERT, GPT2, BART)는 모두 다른 byte pair encoding을 활용하고 있으므로, prepend의 경우, 같은 dataset의 같은 label이라도 subword token으로 split 되는 방식이 다름. 각 dataset의 label은 아래와 같음.
 
-![table_1](https://raw.githubusercontent.com/aisolab/aisolab.github.io/2-posting_paper/_posts/_Data%20Augmentation%20using%20Pre-trained%20Transformer%20Models/table_1.png)
+![table_1](https://raw.githubusercontent.com/aisolab/aisolab.github.io/master/_posts/_Data%20Augmentation%20using%20Pre-trained%20Transformer%20Models/table_1.png)
 
 #### 3.2.1 Low-resourced data scenario
 
 low-resourced data scenario를 위하여, train dataset에 10%를 sampling하고 class label 당 5개의 example을 dev dataset에서 sampling함.
 
-![table_2](https://raw.githubusercontent.com/aisolab/aisolab.github.io/2-posting_paper/_posts/_Data%20Augmentation%20using%20Pre-trained%20Transformer%20Models/table_2.png)
+![table_2](https://raw.githubusercontent.com/aisolab/aisolab.github.io/master/_posts/_Data%20Augmentation%20using%20Pre-trained%20Transformer%20Models/table_2.png)
 
 ### 3.3 Evaluation
 
@@ -170,7 +170,7 @@ intrinsic evaluation을 위해서 각 task-specific dataset에 대해서 bert-ba
 - dev dataset으로 best hyper-parameter의 model을 선정
 - best model로 generated text를 inference
 
-![table_3](https://raw.githubusercontent.com/aisolab/aisolab.github.io/2-posting_paper/_posts/_Data%20Augmentation%20using%20Pre-trained%20Transformer%20Models/table_3.png)
+![table_3](https://raw.githubusercontent.com/aisolab/aisolab.github.io/master/_posts/_Data%20Augmentation%20using%20Pre-trained%20Transformer%20Models/table_3.png)
 
 ## 4. Results and Discussion
 
@@ -179,7 +179,7 @@ intrinsic evaluation을 위해서 각 task-specific dataset에 대해서 bert-ba
 extrinsic evaluation 결과 아래와 같음.
 > *Since the labels in the corpora are well-associated with the mearning of the class (e.g. SearchCreative-Work), prepending tokens allows the model to leverage label information for conditional word replacement.*
 
-![table_4](https://raw.githubusercontent.com/aisolab/aisolab.github.io/2-posting_paper/_posts/_Data%20Augmentation%20using%20Pre-trained%20Transformer%20Models/table_4.png)
+![table_4](https://raw.githubusercontent.com/aisolab/aisolab.github.io/master/_posts/_Data%20Augmentation%20using%20Pre-trained%20Transformer%20Models/table_4.png)
 
 ### 4.2 Pre-trained Model Comparision
 
@@ -187,11 +187,11 @@ table 4를 통해서 비교해보면, BART 기반의 augmentation 방법론이 �
 
 #### 4.2.0 Generated Data Fidelity
 
-![table_5](https://raw.githubusercontent.com/aisolab/aisolab.github.io/2-posting_paper/_posts/_Data%20Augmentation%20using%20Pre-trained%20Transformer%20Models/table_5.png)
+![table_5](https://raw.githubusercontent.com/aisolab/aisolab.github.io/master/_posts/_Data%20Augmentation%20using%20Pre-trained%20Transformer%20Models/table_5.png)
 
 #### 4.2.1 Generated Data Diversity
 
-![table_6](https://raw.githubusercontent.com/aisolab/aisolab.github.io/2-posting_paper/_posts/_Data%20Augmentation%20using%20Pre-trained%20Transformer%20Models/table_6.png)
+![table_6](https://raw.githubusercontent.com/aisolab/aisolab.github.io/master/_posts/_Data%20Augmentation%20using%20Pre-trained%20Transformer%20Models/table_6.png)
 
 ### 4.3 Guidelines For Using Different Types of Pre-trained Models For DA
 
