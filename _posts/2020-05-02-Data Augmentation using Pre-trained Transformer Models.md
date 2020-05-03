@@ -92,8 +92,10 @@ conditional data augmentation을 위해서는 pre-trained model $G$가 task-spec
 
 class label $y_i$을 sequence $x_i$에 prepend하고 아래의 두 가지 방법으로 masking하여 fine-tuning함 (masking되는 word의 ratio는 대략 20%). 이 때 fine-tuning task는 encoder에서 masked sequence를 받고, decoder에서 이를 원래 sequence로 reconstruction하는 것임.
 
-- $\text{BART}_{word}$: replace a word $w_i$ with a mask token $\lt mask \gt$ 
-- $\text{BART}_{span}$: replace a continuous chunk of $k$ words $wi,w_{i+1},...,w_{i+k}$ with a single mask token $\lt mask \gt$
+- $\text{BART}_{word}$
+  - replace a word $w_i$ with a mask token $\lt mask \gt$ 
+- $\text{BART}_{span}$
+  - replace a continuous chunk of $k$ words $wi,w_{i+1},...,w_{i+k}$ with a single mask token $\lt mask \gt$
 
 hyper-parameter setting의 경우 각 task-specific dataset의 validation dataset에 의하여 best model로 결정됨.
 
@@ -144,7 +146,7 @@ unified approach와의 비교를 위한 baseline으로 아래의 두 가지 방�
 
 #### 3.2.1 Low-resourced data scenario
 
-low-reousrced data scenario를 위하여, train dataset에 10%를 sampling하고 class label 당 5개의 example을 dev dataset에서 sampling함.
+low-resourced data scenario를 위하여, train dataset에 10%를 sampling하고 class label 당 5개의 example을 dev dataset에서 sampling함.
 
 ![table_2](https://raw.githubusercontent.com/aisolab/aisolab.github.io/2-posting_paper/_posts/_Data%20Augmentation%20using%20Pre-trained%20Transformer%20Models/table_2.png)
 
