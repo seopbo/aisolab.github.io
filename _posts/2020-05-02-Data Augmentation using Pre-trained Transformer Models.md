@@ -92,8 +92,8 @@ conditional data augmentation을 위해서는 pre-trained model $G$가 task-spec
 
 class label $y_i$을 sequence $x_i$에 prepend하고 아래의 두 가지 방법으로 masking하여 fine-tuning함 (masking되는 word의 ratio는 대략 20%). 이 때 fine-tuning task는 encoder에서 masked sequence를 받고, decoder에서 이를 원래 sequence로 reconstruction하는 것임.
 
-- $\text{BART}_{\text{word}}$: replace a word $w_i$ with a mask token $\lt mask \gt$ 
-- $\text{BART}_{\text{span}}$: replace a continuous chunk of $k$ words $wi,w_{i+1},...,w_{i+k}$ with a single mask token $\lt mask \gt$
+- $\text{BART}_{word}$: replace a word $w_i$ with a mask token $\lt mask \gt$ 
+- $\text{BART}_{span}$: replace a continuous chunk of $k$ words $wi,w_{i+1},...,w_{i+k}$ with a single mask token $\lt mask \gt$
 
 hyper-parameter setting의 경우 각 task-specific dataset의 validation dataset에 의하여 best model로 결정됨.
 
@@ -114,7 +114,7 @@ hyper-parameter setting의 경우 각 task-specific dataset의 validation datase
 비조 대교 실험을 위해서 huggingface의 transformer 패키지에서 GPT2-Small을 활용
 
 - seperate token으로 $SEP$
-- end of sequence token으로 $\lt | endoftext | \gt$를 활용
+- end of sequence token으로 $\lt\mid endoftext\mid\gt$를 활용
 - generation 시, [nucleus sampling](https://arxiv.org/abs/1904.09751)을 활용함.
 
 #### 2.3.3 BART model implementation
