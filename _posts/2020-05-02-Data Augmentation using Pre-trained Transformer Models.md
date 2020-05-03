@@ -59,7 +59,7 @@ natural language processing에서 word replacement를 이용하여 data augmenta
 
 ![alg_1](https://raw.githubusercontent.com/aisolab/aisolab.github.io/master/_posts/_Data%20Augmentation%20using%20Pre-trained%20Transformer%20Models/alg_1.png)
 
-> *Given a training dataset $D_{train}=\{x_i, y_i\}^{1}_{n}$ where $x_i=\{w_j\}^{1}_{m}$ is a sequence of $m$ words, and $y_i$ is the associated label, and pre-trained model $G$, we want to generate a dataset of $D_{synthetic}$. Alogirthm 1 describes the data generation process. For all augmentation methods, we generate $s=1$ synthetic example for every example in $D_{train}$. Thus, the augmented data is same size as the size of the original data.*
+> *Given a training dataset $D_{train}=\{ x_i, y_i \}^{1}_{n}$ where $x_i=\{ w_j \}^{1}_{m}$ is a sequence of $m$ words, and $y_i$ is the associated label, and pre-trained model $G$, we want to generate a dataset of $D_{synthetic}$. Alogirthm 1 describes the data generation process. For all augmentation methods, we generate $s=1$ synthetic example for every example in $D_{train}$. Thus, the augmented data is same size as the size of the original data.*
 
 ### 2.1 Conditional DA using Pre-trained LM
 
@@ -82,7 +82,7 @@ conditional data augmentation을 위해서는 pre-trained model $G$가 task-spec
   - $D_{train}=y_1SEPx_1EOSy_2...y_nSEPx_nEOS.$
   - $SEP$ token을 label과 sentence 사이에 넣고, sentence가 끝나면 $EOS$ token을 concatenate
 - data augmentation 시, fin-tuned model $G$에 에 $y_iSEP$를 넣고 $EOS$ token이 나올 때까지 생성
-  - label compatibility를 충족시키기위하여 $y_iSEPw_1...w_k$를 넣을 수 있음. ($w1...wk$는 $x_i$의 첫 k개의 words, GPT2 context) 
+  - label compatibility를 충족시키기위하여 $y_iSEPw_1...w_k$를 넣을 수 있음. ($w_1...w_k$는 $x_i$의 첫 k개의 words, GPT2 context) 
 
 ### 2.2 Conditional DA using Pre-trained Seq2Seq model
 
@@ -92,8 +92,8 @@ conditional data augmentation을 위해서는 pre-trained model $G$가 task-spec
 
 class label $y_i$을 sequence $x_i$에 prepend하고 아래의 두 가지 방법으로 masking하여 fine-tuning함 (masking되는 word의 ratio는 대략 20%). 이 때 fine-tuning task는 encoder에서 masked sequence를 받고, decoder에서 이를 원래 sequence로 reconstruction하는 것임.
 
-- $\text{BART}_\text{word}$: replace a word $w_i$ with a mask token $<mask>$ 
-- $\text{BART}_\text{span}$: replace a continuous chunk of $k$ words $wi,w_{i+1},...,w_{i+k}$ with a single mask token $<mask>$
+- $\text{BART}_{\text{word}}$: replace a word $w_i$ with a mask token $\lt mask \gt$ 
+- $\text{BART}_{\text{span}}$: replace a continuous chunk of $k$ words $wi,w_{i+1},...,w_{i+k}$ with a single mask token $\lt mask \gt$
 
 hyper-parameter setting의 경우 각 task-specific dataset의 validation dataset에 의하여 best model로 결정됨.
 
@@ -114,14 +114,14 @@ hyper-parameter setting의 경우 각 task-specific dataset의 validation datase
 비조 대교 실험을 위해서 huggingface의 transformer 패키지에서 GPT2-Small을 활용
 
 - seperate token으로 $SEP$
-- end of sequence token으로 $<|endoftext|>$를 활용
+- end of sequence token으로 $\lt | endoftext | \gt$를 활용
 - generation 시, [nucleus sampling](https://arxiv.org/abs/1904.09751)을 활용함.
 
 #### 2.3.3 BART model implementation
 
 비조 대교 실험을 위해서 fairseq toolkit에 구현된 BART large model을 활용함.
 
-- BART model vocabulary에 있는 $<mask>$를 word (또는 token)을 masking하는 데 활용함.
+- BART model vocabulary에 있는 $\lt mask \gt$를 word (또는 token)을 masking하는 데 활용함.
 - fine-tuning 시 encoder에 20% 정도의 word (또는 token)을 masking해서 넣고, decoder에서 이를 reconstruction하는 task를 수행함.
   > *Note that label $y_i$ is prepended to each sequence $x_i$, and decoder also produces the $y_i$ like any other token in $x_i$* 
 - label smoothing을 활용
