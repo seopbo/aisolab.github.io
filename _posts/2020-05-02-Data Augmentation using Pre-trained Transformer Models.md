@@ -12,7 +12,7 @@ tags:
 
 ## 0. Abstract
 
-> *Language model based pre-trained models such as BERT have provided significant gains across different NLP tasks. In this paper, we study different types of pre-trained transformer based models such as auto-regressive models (GPT-2), auto-encoder models (BERT), and seq2seq models (BART) for conditional data augmentation. ***We show that prepending the class labels to text sequences provides a simple yet effective way to condition the pre-trained models for data augmentation. On three classification benchmarks, pre-trained Seq2Seq model outperforms other models.*** Further, we explore how different pretrained model based data augmentation differs in terms of data diversity, and how well such methods preserve the class-label information.*
+> *Language model based pre-trained models such as BERT have provided significant gains across different NLP tasks. In this paper, we study different types of pre-trained transformer based models such as auto-regressive models (GPT-2), auto-encoder models (BERT), and seq2seq models (BART) for conditional data augmentation. **We show that prepending the class labels to text sequences provides a simple yet effective way to condition the pre-trained models for data augmentation. On three classification benchmarks, pre-trained Seq2Seq model outperforms other models.** Further, we explore how different pretrained model based data augmentation differs in terms of data diversity, and how well such methods preserve the class-label information.*
 
 ## 1. Introduction
 
@@ -197,4 +197,4 @@ AE model은 label 정보를 잘 보존할 수 있으나, 비슷한 길이의 seq
 > *Seq2Seq models lie between AE and AR by providing a good balance between dicersity and semantic fidelity. Further, in Seq2Seq models, dicersity of the generated data can be controlled by varying the length of span masking.*
 
 ## 5. Conclusion And Future Work
-> *We show that ***AE, AR, and Seq2Seq pre-trained models can be conditioned on labels by prepending label information and provide an effective way to augment training data.*** These DA methods can be easily combined with other advances in text content manipulation such as co-training the data generator and classifier. We hope that unifying different DA methods would inspire new approahces for universal NLP data augmentaiton.*
+> *We show that **AE, AR, and Seq2Seq pre-trained models can be conditioned on labels by prepending label information and provide an effective way to augment training data.** These DA methods can be easily combined with other advances in text content manipulation such as co-training the data generator and classifier. We hope that unifying different DA methods would inspire new approahces for universal NLP data augmentaiton.*
