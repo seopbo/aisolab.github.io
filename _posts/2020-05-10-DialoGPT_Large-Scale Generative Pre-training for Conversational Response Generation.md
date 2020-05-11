@@ -70,11 +70,12 @@ GPT-2의 architetcure를 그대로 따르되, multi-turn dialogue session을 하
 - dialogue session이 single-turn일 경우, 다음과 같이 modeling 되는 것이라 볼 수 있음.
   
 $$ P(T \mid S)=\prod_{n=m+1}^{N}p(x_n \mid x_1,...,x_{n-1}) $$
+
 $$ S=x_1,...,x_m,T=x_{m+1},...,x_N $$
 
 - dialogue session이 mult-turn일 경우 ($T_1,...T_K$), 다음과 같이 modeling 되는 것이라 볼 수 있음.
 
-$$ p(T_K,...,T_2 \mid T_1)=p(T_2 \mid T_1) \cdot p(T_3 \mid T_2,T_1) \cdot ... \cdot p(T_K \mid T_{K-1},...,T_1)$$
+$$ p(T_K,...,T_2 \mid T_1)=p(T_2 \mid T_1) \cdot p(T_3 \mid T_2,T_1) \cdot ... \cdot p(T_K \mid T_{K-1},...,T_1) $$
 
 ### 3.2 Mutual Information Maximization
 
